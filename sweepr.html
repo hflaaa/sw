@@ -33,7 +33,6 @@
     let randarArr = [];
     let mainDom = document.getElementById('main');
 
-    // 记录当前有多少个旗子
     let flagCount = 0;
     window.onload = function () {
         init();
@@ -49,12 +48,12 @@
                 td.className = 'block';
                 td.style.backgroundColor = '#BDBDBD';
                 td.id = i + '-' + j;
-                // 点击事件
+                
                 td.onclick = function () {
                     click(i, j);
                     success();
                 }
-                // 右击插旗
+               
                 td.oncontextmenu = function (){
                     insertFlag(i, j);
                     success();
@@ -68,7 +67,7 @@
         mainDom.appendChild(table);
     }
 
-    // 初使化
+   
     function init() {
         for (let i = 0; i < HEIGHT; i++) {
             randarArr[i] = []
@@ -81,7 +80,7 @@
         render();
     }
 
-    // 创建雷
+    
     function createRandar() {
         let count = 0;
         let i, j;
@@ -95,7 +94,7 @@
         }
     }
 
-    // 计算每个方格周围有多少个雷
+   
     function roundRandarCount() {
         // 记录有多少个雷
         let count = 0;
@@ -155,7 +154,7 @@
         }
     }
 
-    // 递归显示周围没有雷的格子
+    
     function show(i, j) {
         let currentDom = document.getElementById(i + '-' + j);
         let current = randarArr[i][j];
@@ -201,7 +200,7 @@
         }
     }
 
-    // 显示所有雷
+    
     function showAllRandar() {
         for (let i = 0; i < HEIGHT; i++) {
             for (let j = 0; j < WIDTH; j++) {
@@ -218,7 +217,7 @@
         let current = randarArr[i][j];
         let currentDom = document.getElementById(i + '-' + j);
 
-        // 如果已经显示了，不能插旗,旗子不能比雷多
+        
         if (current.isShow === false && flagCount <= COUNT) {
             let img = document.createElement('img');
             img.src = 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=312918878,3266997769&fm=26&gp=0.jpg';
@@ -231,7 +230,7 @@
         }
     }
 
-    // 判断游戏是否结束 
+    
     function success() {
         for (let i = 0; i < HEIGHT; i++) {
             for (let j = 0; j < WIDTH; j++) {
